@@ -61,14 +61,19 @@ public class CartAction {
     }
 
     public String changeCount(){
-        if (count < 1){
-            count = 1;
-        }
         HttpSession session = ServletActionContext.getRequest ().getSession ();
         Cart cart = (Cart) session.getAttribute ("cart");
         Map<Integer, CartItem> itemMap = cart.getItemMap ();
         CartItem cartItem = itemMap.get (id);
-        cartItem.setCount (count);
+        if (count == null){
+            cartItem.setCount (cartItem.getCount ());
+        }else {
+            if (count < 1){
+                count = 1;
+            }
+            cartItem.setCount (count);
+        }
+
         return "success";
     }
 

@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee8b6be-0ed6-4479-8be0-9ba6eb3529ee" name="Default Changelist" comment="完成查询一级二级类别后展示类别和对应图书">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/front/cart/cart_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/front/cart/cart_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/front/main/book_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/front/main/book_detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/front/main/book_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/front/main/book_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/front/main/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/front/main/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
-              <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+            <state relative-caret-position="232">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#108#109#0" expanded="true" />
@@ -99,15 +94,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/front/main/recommend.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="11" column="101" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zp/entity/CartItem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="27">
@@ -126,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/front/cart/cart_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="106" column="87" lean-forward="true" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
+            <state relative-caret-position="286">
+              <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -230,8 +216,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/front/main/book_list.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/front/main/book_detail.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/struts.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/front/cart/cart_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java" />
       </list>
     </option>
   </component>
@@ -667,7 +653,7 @@
       <workItem from="1589156607265" duration="21319000" />
       <workItem from="1589244060238" duration="22125000" />
       <workItem from="1589338765246" duration="9139000" />
-      <workItem from="1589417625982" duration="28064000" />
+      <workItem from="1589417625982" duration="28628000" />
     </task>
     <servers />
   </component>
@@ -704,7 +690,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90493000" />
+    <option name="totallyTimeSpent" value="91057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -758,6 +744,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="完成查询一级二级类别后展示类别和对应图书" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="book" language="JAVA" />
@@ -937,13 +933,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/struts/xwork/xwork-core/2.3.16.3/xwork-core-2.3.16.3.jar!/com/opensymphony/xwork2/DefaultActionInvocation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="383" selection-start-line="383" selection-end-line="383" />
         </state>
       </provider>
     </entry>
@@ -1194,10 +1183,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="934">
+          <caret line="64" column="17" lean-forward="true" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/struts/xwork/xwork-core/2.3.16.3/xwork-core-2.3.16.3.jar!/com/opensymphony/xwork2/DefaultActionInvocation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="383" selection-start-line="383" selection-end-line="383" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/front/cart/cart_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zp/action/front/CartAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+        <state relative-caret-position="232">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#108#109#0" expanded="true" />
@@ -1208,24 +1222,6 @@
             <element signature="e#1616#1617#0" expanded="true" />
             <element signature="e#1659#1660#0" expanded="true" />
             <element signature="e#1693#1694#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="934">
-          <caret line="64" column="17" lean-forward="true" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/front/cart/cart_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="106" column="87" lean-forward="true" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
