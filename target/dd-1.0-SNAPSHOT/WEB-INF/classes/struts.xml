@@ -55,6 +55,7 @@
 		<action name="*" class="com.zp.action.front.BookAction" method="{1}">
 			<result name="showMainPageSuccess">/front/main/main.jsp</result>
 			<result name="showBookByCategorySuccess">/front/main/book_list.jsp</result>
+			<result name="showOneBookById">/front/main/book_detail.jsp</result>
 		</action>
 	</package>
 

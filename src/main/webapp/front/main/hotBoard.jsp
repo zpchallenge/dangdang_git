@@ -7,7 +7,7 @@
 	<ul>
 		<c:forEach items="${requestScope.newAndSaleBooks}" var="b">
 			<li>&nbsp;&nbsp;&nbsp;
-			<a  target='_blank' href="">
+			<a  target='_blank' href="${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}">
 				${b.name}
 			</a>
 		</li>

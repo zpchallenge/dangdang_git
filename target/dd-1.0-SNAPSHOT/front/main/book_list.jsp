@@ -168,12 +168,12 @@
 						<div class="clear"></div>
 							<div class="list_r_list">
 								<span class="list_r_list_book">
-									<a name="link_prd_img" href='#'>
+									<a name="link_prd_img" href='${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}' target='_blank'>
 										<img height="100px" src="${pageContext.request.contextPath}/back/img/${b.cover}" />
 									</a>
 								</span>
 								<h2>
-									<a name="link_prd_name" href='#'>${b.name}</a>
+									<a name="link_prd_name" href='${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}' target='_blank'>${b.name}</a>
 								</h2>
 								<h3>
 									顾客评分：100

@@ -8,12 +8,12 @@
 	<c:forEach items="${requestScope.newBooks}" var="b">
 		<div class="second_d_wai">
 			<div class="img">
-				<a href="#" target='_blank'>
+				<a href="${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}" target='_blank'>
 					<img src="${pageContext.request.contextPath}/back/img/${b.cover}" border=0 />
 				</a>
 			</div>
 			<div class="shuming">
-				<a href="#" target="_blank">${b.name}</a><a href="#" target="_blank"></a>
+				<a href="${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}" target="_blank">${b.name}</a><a href="#" target="_blank"></a>
 			</div>
 			<div class="price">
 				定价：￥${b.price}

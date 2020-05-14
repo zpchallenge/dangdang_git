@@ -203,4 +203,28 @@ public class BookAction {
         totalCount = sum;
         return "showBookByCategorySuccess";
     }
+
+    private Integer bookId;
+    private Book book;
+
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public String showOneBookById(){
+        book = bookService.selectById (bookId);
+        return "showOneBookById";
+    }
 }

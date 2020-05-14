@@ -9,13 +9,13 @@
 		<c:forEach items="${requestScope.editorBooks}" var="b">
 			<div class=second_c_02_b1>
 			<div class=second_c_02_b1_1>
-				<a href='#' target='_blank'>
+				<a href='${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}' target='_blank'>
 					<img height="100px" src="${pageContext.request.contextPath}/back/img/${b.cover}" width=70 border=0 />
 				</a>
 			</div>
 			<div class=second_c_02_b1_2>
 				<h3>
-					<a href='#' target='_blank' title='输赢'>${b.name}</a>
+					<a href='${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${b.id}' target='_blank' title='输赢'>${b.name}</a>
 				</h3>
 				<h4>
 					作者：${b.author} 著

@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 	<head>
 		<title>图书详情</title>
@@ -11,42 +11,42 @@
 		<br/>
 		<div>
 			<h1>
-				丛书名：
+				丛书名：${requestScope.book.name}
 			</h1>
 			<hr/>
 		</div>
 		<table width="80%" border="0" align="center" cellspacing="0" cellpadding="5">
 			<tr>
-				<td rowspan="9" width="20%" valign="top"><img src="" width="240px" height="340px" /></td>
-				<td colspan="2">作者：></td>
+				<td rowspan="9" width="20%" valign="top"><img src="${pageContext.request.contextPath}/back/img/${requestScope.book.cover}" width="240px" height="340px" /></td>
+				<td colspan="2">作者：${requestScope.book.author}</td>
 			</tr>
 			<tr>
-				<td colspan="2">出版社：</td>
+				<td colspan="2">出版社：${requestScope.book.press}</td>
 			</tr>
 			<tr>
-				<td>出版时间： </td>
-				<td>字数：</td>
+				<td>出版时间： <fmt:formatDate value="${requestScope.book.pressDate}" pattern="yyyy-MM-dd"></fmt:formatDate> </td>
+				<td>字数：${requestScope.book.wordNum}</td>
 			</tr>
 			<tr>
-				<td>版次：</td>
-				<td>页数：</td>
+				<td>版次：${requestScope.book.edition}</td>
+				<td>页数：${requestScope.book.pageNum}</td>
 			</tr>
 			<tr>
-				<td>印刷时间：</td>
-				<td>开本：</td>
+				<td>印刷时间：<fmt:formatDate value="${requestScope.book.printDate}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+				<td>开本：${requestScope.book.sizes}</td>
 			</tr>
 			<tr>
-				<td>印次：</td>
-				<td>纸张：</td>
+				<td>印次：${requestScope.book.impression}</td>
+				<td>纸张：${requestScope.book.paper}</td>
 			</tr>
 			<tr>
-				<td>ISBN：</td>
-				<td>包装：</td>
+				<td>ISBN：${requestScope.book.isbn}</td>
+				<td>包装：${requestScope.book.pack}</td>
 			</tr>
 			<tr>
-				<td colspan="2">定价：￥&nbsp;&nbsp;&nbsp;&nbsp;
-				<font color="red">当当价：￥</font>&nbsp;&nbsp;&nbsp;&nbsp;
-				节省：￥</td>
+				<td colspan="2">定价：￥${requestScope.book.price}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font color="red">当当价：￥${requestScope.book.dprice}</font>&nbsp;&nbsp;&nbsp;&nbsp;
+				节省：￥${requestScope.book.price - requestScope.book.dprice}</td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -58,19 +58,19 @@
 		</table>
 		<hr style="border:1px dotted #666"/>
 		<h2>编辑推荐</h2>
-		<p>&nbsp;&nbsp;</p>
+		<p>&nbsp;&nbsp;${requestScope.book.editorRecommend}</p>
 		<hr style="border:1px dotted #666"/>
 		<h2>内容简介</h2>
-		<p>&nbsp;&nbsp;</p>
+		<p>&nbsp;&nbsp;${requestScope.book.contentAbstract}</p>
 		<hr style="border:1px dotted #666"/>
 		<h2>作者简介</h2>
-		<p>&nbsp;&nbsp;</p>
+		<p>&nbsp;&nbsp;${requestScope.book.authorAbstract}</p>
 		<hr style="border:1px dotted #666"/>
 		<h2>目录</h2>
-		<p>&nbsp;&nbsp;</p>
+		<p>&nbsp;&nbsp;${requestScope.book.director}</p>
 		<hr style="border:1px dotted #666"/>
 		<h2>媒体评论</h2>
-		<p>&nbsp;&nbsp;</p>
+		<p>&nbsp;&nbsp;${requestScope.book.mediaCommentary}</p>
 		<hr style="border:1px dotted #666"/>
 		<h2>书摘插图</h2>
 		<p>&nbsp;&nbsp;</p>
