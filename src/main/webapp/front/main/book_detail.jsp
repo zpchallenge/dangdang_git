@@ -50,7 +50,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<a href="">
+					<a href="${pageContext.request.contextPath}/front/cart/addCart?id=${requestScope.book.id}">
 						<img src='../images/buttom_goumai.gif' />
 					</a>
 				</td>

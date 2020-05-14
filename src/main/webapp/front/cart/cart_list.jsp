@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>当当图书 – 全球最大的中文网上书店</title>
@@ -7,6 +7,27 @@
 		<link href="../css/second.css" rel="stylesheet" type="text/css" />
 		<link href="../css/secBook_Show.css" rel="stylesheet" type="text/css" />
 		<link href="../css/shopping_vehicle.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="${pageContext.request.contextPath}/front/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				var p = 0;
+				var total = 0;
+				$(".yprice").each(function (i, obj1) {
+					console.log(i, obj1);
+					var dprices = $(".dprice");
+					var price = Number.parseFloat($(this).html());
+					var dprice = Number.parseFloat($(dprices[i]).html());
+					console.log(price, dprice);
+					var counts = $(".count");
+					var count = Number.parseInt($(counts[i]).html());
+					p += (price - dprice) * count;
+					total += dprice*count;
+				});
+				$("#total_economy").html(p);
+				$("#total_account").html(total);
+
+			});
+		</script>
 	</head>
 	<body>
 		<br />
@@ -56,145 +77,61 @@
 							&nbsp;
 						</td>
 					</tr>
-					
+					<c:forEach items="${sessionScope.cart.itemMap}" var="cartMap">
 					<!-- 购物列表开始 -->
-					<tr class='td_no_bord'>
+						<tr class='td_no_bord'>
 						<td style='display: none'>
-							b12345
+							${cartMap.key}
 						</td>
 						<td class="buy_td_6">
 							<span class="objhide">
-								<img src="" /> 
+								<img src="" />
 							</span>
 						</td>
-						<td>
-							<a href="">测试图书1</a>
+						<td style="padding-left: 100px">
+							<a href="${pageContext.request.contextPath}/front/book/showOneBookById?bookId=${cartMap.key}">${cartMap.value.book.name}</a>
 						</td>
 						<td class="buy_td_5">
-							<span class="c_gray">￥100</span>
+							￥<span class="c_gray yprice">${cartMap.value.book.price}</span>
 						</td>
 						<td class="buy_td_4">
 							&nbsp;&nbsp;
-							<span>￥99</span>
+							￥<span class="dprice">${cartMap.value.book.dprice}</span>
 						</td>
 						<td class="buy_td_1">
-							&nbsp;&nbsp;2
+							&nbsp;&nbsp;<span class="count">${cartMap.value.count}</span>
 						</td>
 
 						<td >
-							<input id=" class="del_num" type="number" size="3" maxlength="4" />
-							<a href="#" >变更</a>
+							<form id="changeForm" action="${pageContext.request.contextPath}/front/cart/changeCount">
+								<input type="hidden" name="id" value="${cartMap.key}"/>
+								<input class="del_num" type="number" name="count" size="3" maxlength="4" />
+								<a href="javascript:void(0)" onclick="toSubmit()">变更</a>
+							</form>
+							<script type="text/javascript">
+								function toSubmit() {
+									$("#changeForm").submit();
+								}
+							</script>
 						</td>
 						<td>
-							<a href="">删除</a>
+							<a href="${pageContext.request.contextPath}/front/cart/deleteById?id=${cartMap.key}">删除</a>
 						</td>
 					</tr>
-					<tr class='td_no_bord'>
-						<td style='display: none'>
-							b12345
-						</td>
-						<td class="buy_td_6">
-							<span class="objhide">
-								<img src="" /> 
-							</span>
-						</td>
-						<td>
-							<a href="">测试图书1</a>
-						</td>
-						<td class="buy_td_5">
-							<span class="c_gray">￥100</span>
-						</td>
-						<td class="buy_td_4">
-							&nbsp;&nbsp;
-							<span>￥99</span>
-						</td>
-						<td class="buy_td_1">
-							&nbsp;&nbsp;2
-						</td>
-
-						<td >
-							<input id=" class="del_num" type="number" size="3" maxlength="4" />
-							<a href="#" >变更</a>
-						</td>
-						<td>
-							<a href="">删除</a>
-						</td>
-					</tr>
-					<tr class='td_no_bord'>
-						<td style='display: none'>
-							b12345
-						</td>
-						<td class="buy_td_6">
-							<span class="objhide">
-								<img src="" /> 
-							</span>
-						</td>
-						<td>
-							<a href="">测试图书1</a>
-						</td>
-						<td class="buy_td_5">
-							<span class="c_gray">￥100</span>
-						</td>
-						<td class="buy_td_4">
-							&nbsp;&nbsp;
-							<span>￥99</span>
-						</td>
-						<td class="buy_td_1">
-							&nbsp;&nbsp;2
-						</td>
-
-						<td >
-							<input id=" class="del_num" type="number" size="3" maxlength="4" />
-							<a href="#" >变更</a>
-						</td>
-						<td>
-							<a href="">删除</a>
-						</td>
-					</tr>
-					<tr class='td_no_bord'>
-						<td style='display: none'>
-							b12345
-						</td>
-						<td class="buy_td_6">
-							<span class="objhide">
-								<img src="" /> 
-							</span>
-						</td>
-						<td>
-							<a href="">测试图书1</a>
-						</td>
-						<td class="buy_td_5">
-							<span class="c_gray">￥100</span>
-						</td>
-						<td class="buy_td_4">
-							&nbsp;&nbsp;
-							<span>￥99</span>
-						</td>
-						<td class="buy_td_1">
-							&nbsp;&nbsp;2
-						</td>
-
-						<td >
-							<input id=" class="del_num" type="number" size="3" maxlength="4" />
-							<a href="#" >变更</a>
-						</td>
-						<td>
-							<a href="">删除</a>
-						</td>
-					</tr>
+					</c:forEach>
 				</table>
 
 				<div class="choice_balance">
 					<div class="select_merch">
-						<a href=""> 继续挑选商品>></a>
+						<a href="${pageContext.request.contextPath}/front/book/showMainPage"> 继续挑选商品>></a>
 					</div>
 					<div class="total_balance">
 						<div class="save_total">
 							您共节省：
-							<span class="c_red"> ￥<span id="total_economy">4</span> </span>
+							<span class="c_red"> ￥<span id="total_economy"></span> </span>
 							<span style="font-size: 14px">|</span>
 							<span class="t_add">商品金额总计：</span>
-							<span class="c_red_b"> ￥<span id='total_account'>396</span>
+							<span class="c_red_b"> ￥<span id='total_account'></span>
 							</span>
 						</div>
 						<div id="balance" class="balance">

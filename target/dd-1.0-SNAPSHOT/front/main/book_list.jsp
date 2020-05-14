@@ -199,7 +199,7 @@
 									节省：￥${b.price - b.dprice}
 								</h6>
 								<span class="list_r_list_button">
-								<a href="#"> 
+								<a href="${pageContext.request.contextPath}/front/cart/addCart?id=${b.id}">
 									<img src='${pageContext.request.contextPath}/front/images/buttom_goumai.gif' />
 								</a>
 								<span id="cartinfo"></span>

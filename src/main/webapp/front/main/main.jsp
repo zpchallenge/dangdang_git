@@ -23,7 +23,7 @@
 
 			<!--左栏开始-->
 			<div id="left" class="book_left">
-
+				<jsp:include page="category.jsp"></jsp:include>
 			</div>
 			<!--左栏结束-->
 
@@ -32,18 +32,20 @@
 
 				<!--推荐图书开始-->
 				<div class=second_c_border1 id="recommend">
-
+					<jsp:include page="recommend.jsp"></jsp:include>
 				</div>
 
 				<!--推荐图书结束-->
 
 				<!--热销图书开始-->
 				<div class="book_c_border2" id="hot">
+					<jsp:include page="hot.jsp"></jsp:include>
 				</div>
 				<!--热销图书结束-->
 
 				<!--最新上架图书开始-->
 				<div class="book_c_border2" id="new">
+					<jsp:include page="new.jsp"></jsp:include>
 				</div>
 
 				<!--最新上架图书结束-->
@@ -60,7 +62,7 @@
 				<div class="book_r_border2" id="__XinShuReMai">
 					<div class="book_r_b2_1x" id="new_bang">
 						<div id="NewProduct_1_o_t" onmouseover="">
-	
+							<jsp:include page="hotBoard.jsp"></jsp:include>
 						</div>
 					</div>
 				</div>

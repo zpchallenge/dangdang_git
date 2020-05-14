@@ -59,4 +59,10 @@
 		</action>
 	</package>
 
+	<package name="cart" extends="struts-default" namespace="/front/cart">
+		<action name="*" class="com.zp.action.front.CartAction" method="{1}">
+			<result name="success" type="redirect">/front/cart/cart_list.jsp</result>
+		</action>
+	</package>
+
 </struts>
