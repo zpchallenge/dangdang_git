@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zp.dao.ItemDao">
+
+    <resultMap id="itemMap" type="Item">
+        <id column="id" property="id"/>
+        <result column="count" property="count"/>
+        <result column="create_date" property="createDate"/>
+        <association property="book" javaType="Book">
+            <result column="name" property="name"/>
+            <result column="author" property="author"/>
+            <result column="cover" property="cover"/>
+            <result column="press" property="press"/>
+            <result column="press_date" property="pressDate"/>
+            <result column="price" property="price"/>
+            <result column="dprice" property="dprice"/>
+            <result column="sale" property="sale"/>
+            <result column="stock" property="stock"/>
+        </association>
+    </resultMap>
+
+    <select id="selectByOrderId" resultMap="itemMap">
+        select i.id, i.count, b.name, b.cover, b.price, b.dprice
+        from item i left join book b
+        on i.book_id = b.id
+        where i.order_id = #{orderId}
+    </select>
+
+    <insert id="insert">
+        insert into item values(#{id},#{book.id},#{count},#{createDate},#{order.id})
+    </insert>
+</mapper>

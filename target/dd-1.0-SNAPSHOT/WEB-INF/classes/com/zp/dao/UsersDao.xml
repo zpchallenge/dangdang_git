@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zp.dao.UsersDao">
+
+    <resultMap id="usersMap" type="Users">
+        <id column="id" property="id"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="nickname" property="nickname"/>
+        <result column="status" property="status"/>
+        <result column="code" property="code"/>
+        <result column="create_date" property="createDate"/>
+    </resultMap>
+
+    <select id="selectUserByEmail" resultMap="usersMap">
+        select * from users where email = #{email}
+    </select>
+
+    <select id="selectAllByPage" resultMap="usersMap">
+        select *
+        from (select u.*, rownum n from users u)
+        where n between #{start} and #{end}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from users
+    </select>
+
+    <insert id="insert">
+        insert into users values(#{id},#{email},#{password},#{salt},#{nickname},#{status},#{code},#{createDate})
+    </insert>
+
+    <update id="updateStatus">
+        update users
+        <set>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

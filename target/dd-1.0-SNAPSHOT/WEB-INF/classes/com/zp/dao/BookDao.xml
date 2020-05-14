@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zp.dao.BookDao">
+
+    <resultMap id="bookMap" type="Book">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="author" column="author"/>
+        <result property="cover" column="cover"/>
+        <result property="press" column="press"/>
+        <result property="pressDate" column="press_date"/>
+        <result property="edition" column="edition"/>
+        <result property="printDate" column="print_date"/>
+        <result property="impression" column="impression"/>
+        <result property="isbn" column="isbn"/>
+        <result property="wordNum" column="word_num"/>
+        <result property="pageNum" column="page_num"/>
+        <result property="sizes" column="sizes"/>
+        <result property="paper" column="paper"/>
+        <result property="pack" column="pack"/>
+        <result property="price" column="price"/>
+        <result property="dprice" column="dprice"/>
+        <result property="createDate" column="create_date"/>
+        <result property="editorRecommend" column="editor_recommend"/>
+        <result property="contentAbstract" column="content_abstract"/>
+        <result property="authorAbstract" column="author_abstract"/>
+        <result property="director" column="director"/>
+        <result property="mediaCommentary" column="media_commentary"/>
+        <result property="sale" column="sale"/>
+        <result property="stock" column="stock"/>
+        <association property="category" javaType="Category">
+            <id property="id" column="cid"/>
+            <result property="name" column="cname"/>
+        </association>
+    </resultMap>
+
+    <select id="selectBookByEdition" resultMap="bookMap">
+        select *
+        from (select * from book order by dbms_random.value)
+        where rownum &lt;= 2
+    </select>
+
+    <select id="selectBookByNew" resultMap="bookMap">
+        select *
+        from (select * from book order by create_date desc)
+        where rownum &lt;= 8
+    </select>
+
+    <select id="selectBookBySale" resultMap="bookMap">
+        select *
+        from (select * from book order by sale desc)
+        where rownum &lt;= 4
+    </select>
+
+    <select id="selectBookByNewAndSale" resultMap="bookMap">
+        select *
+        from (select * from book order by create_date desc, sale desc)
+        where rownum &lt;= 8
+    </select>
+
+    <select id="selectBookByOneLevel" resultMap="bookMap">
+        select *
+        from  (select b.*, rownum n from book b
+            where category_id in (select id from category where parent_id = #{id}) order by create_date desc)
+        where n between #{start} and #{end}
+    </select>
+
+    <select id="countOne" resultType="int">
+        select count(*) from book b
+            where category_id in (select id from category where parent_id = #{id})
+    </select>
+
+    <select id="selectBookByTwoLevel" resultMap="bookMap">
+        select *
+        from (select b.*, rownum n from book b where category_id = #{id} order by create_date desc)
+        where n between #{start} and #{end}
+    </select>
+
+    <select id="countTwo" resultType="int">
+        select count(*) from book b where category_id = #{id}
+    </select>
+
+    <select id="selectByCategoryId" resultMap="bookMap">
+        select b.*,  c.id cid, c.name cname
+        from book b left join category c
+        on b.category_id = c.id
+        where category_id = #{categoryId}
+    </select>
+
+    <select id="selectById" resultMap="bookMap">
+        select b.*,  c.id cid, c.name cname
+        from book b left join category c
+        on b.category_id = c.id
+        where b.id = #{id}
+    </select>
+
+    <select id="selectAllByPage" resultMap="bookMap">
+        select *
+        from(select b.*, rownum n
+        from (select * from book order by create_date) b
+        <where>
+            <if test="name != null">
+                name like #{name}
+            </if>
+            <if test="author != null">
+                author like #{author}
+            </if>
+            <if test="press != null">
+                press like #{press}
+            </if>
+        </where>
+        )
+        where n between #{start} and #{end}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from book
+        <where>
+            <if test="name != null">
+                name like #{name}
+            </if>
+            <if test="author != null">
+                author like #{author}
+            </if>
+            <if test="press != null">
+                press like #{press}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert">
+        insert into book values(seq_book.nextval,#{name},#{author},#{cover},#{press},#{pressDate},#{edition},#{printDate},#{impression},#{isbn},
+        #{wordNum},#{pageNum},#{sizes},#{paper},#{pack},#{price},#{dprice},#{createDate},#{editorRecommend},#{contentAbstract},#{authorAbstract},
+        #{director},#{mediaCommentary},#{category.id},#{sale},#{stock})
+    </insert>
+
+    <delete id="deleteById">
+        delete from book where id = #{id}
+    </delete>
+
+    <update id="update">
+        update book
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="author != null">
+                author = #{author},
+            </if>
+            <if test="cover != null">
+                cover = #{cover},
+            </if>
+            <if test="press != null">
+                press = #{press},
+            </if>
+            <if test="pressDate != null">
+                press_date = #{pressDate},
+            </if>
+            <if test="edition != null">
+                edition = #{edition},
+            </if>
+            <if test="printDate != null">
+                print_date = #{printDate},
+            </if>
+            <if test="impression != null">
+                impression = #{impression},
+            </if>
+            <if test="isbn != null">
+                isbn = #{isbn},
+            </if>
+            <if test="wordNum != null">
+                word_num = #{wordNum},
+            </if>
+            <if test="pageNum != null">
+                page_num = #{pageNum},
+            </if>
+            <if test="sizes != null">
+                sizes = #{sizes},
+            </if>
+            <if test="paper != null">
+                paper = #{paper},
+            </if>
+            <if test="pack != null">
+                pack = #{pack},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="dprice != null">
+                dprice = #{dprice},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate},
+            </if>
+            <if test="editorRecommend != null">
+                editor_recommend = #{editorRecommend},
+            </if>
+            <if test="contentAbstract != null">
+                content_abstract = #{contentAbstract},
+            </if>
+            <if test="authorAbstract != null">
+                author_abstract = #{authorAbstract},
+            </if>
+            <if test="director != null">
+                director = #{director},
+            </if>
+            <if test="mediaCommentary != null">
+                media_commentary = #{mediaCommentary},
+            </if>
+            <if test="category.id != null">
+                category_id = #{category.id},
+            </if>
+            <if test="sale != null">
+                sale = #{sale},
+            </if>
+            <if test="stock != null">
+                stock = #{stock}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+    <!-- 加载配置文件 -->
+    <properties resource="jdbc.properties"></properties>
+
+    <typeAliases>
+        <!-- 给实体类起别名方式一： -->
+        <!-- 给实体类User起别名，不区分大小写
+            type：实体类全选限定类名   alias：短别名
+        -->
+        <!--<typeAlias type="com.zp.entity.User" alias="user"></typeAlias>-->
+
+        <!-- 给实体类起别名方式二（实战常用）： -->
+        <!-- 扫描name属性指定的包及该包的所有子包的所有类批量起别名，别名规则：默认短类名 -->
+        <package name="com.zp.entity"/>
+    </typeAliases>
+
+    <!-- 配置数据库环境 -->
+    <environments default="oracle">
+        <!--
+        一个environment表示一个数据库环境
+            id：数据库环境唯一标识
+        -->
+        <environment id="oracle">
+            <!--transactionManager 事务管理器
+                    type：设置事务管理方式
+                        JDBC：手动事务管理
+                        MANAGED：交由第3方框架控制事务
+            -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--
+                 dataSource：数据源（连接池）
+                    type：POOLED使用连接池    UNPOOLED不使用连接池
+            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverClassName}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 配置映射配置文件路径，注册mapper.xml -->
+    <mappers>
+        <!-- 基础配置方式 -->
+        <!--<mapper resource="com/zp/dao/UserDAOMapper.xml"/>-->
+
+        <!-- 升级配置方式 -->
+        <!-- 自动扫描dao接口下所有和接口同名的映射文件（必须同名） -->
+        <package name="com.zp.dao"></package>
+    </mappers>
+</configuration>

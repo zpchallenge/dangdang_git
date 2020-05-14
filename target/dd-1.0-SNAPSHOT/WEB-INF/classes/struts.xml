@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<!-- 后台所有模块 -->
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<action name="*" class="com.zp.action.back.AdminAction" method="{1}">
+			<result name="validateCodeError" type="redirect">/back/login.jsp?message=${message}</result>
+			<result name="loginFail" type="redirect">/back/login.jsp?message=${message}</result>
+			<result name="loginSuccess" type="redirect">/back/main/main.jsp</result>
+			<result name="logoutSuccess" type="redirect">/back/login.jsp</result>
+		</action>
+	</package>
+
+	<package name="category" extends="struts-default" namespace="/category">
+		<action name="*" class="com.zp.action.back.CategoryAction" method="{1}">
+			<result name="showSuccess">/back/category/show.jsp</result>
+			<result name="toAddSecondSuccess">/back/category/add-second.jsp</result>
+			<result name="deleteOneLevelsFail" type="redirectAction">showAll?errorMsg=${errorMsg}</result>
+			<result name="deleteTwoLevelsFail" type="redirectAction">showAll?errorMsg=${errorMsg}</result>
+			<result name="success" type="redirectAction">showAll</result>
+		</action>
+	</package>
+
+	<package name="user" extends="struts-default" namespace="/user">
+		<action name="*" class="com.zp.action.back.UsersAction" method="{1}">
+			<result name="showSuccess">/back/user/show.jsp</result>
+			<result name="success" type="redirectAction">showAll</result>
+		</action>
+	</package>
+
+	<package name="book" extends="struts-default" namespace="/book">
+		<action name="*" class="com.zp.action.back.BookAction" method="{1}">
+			<result name="showSuccess">/back/book/show.jsp</result>
+			<result name="success" type="redirectAction">showAll</result>
+			<result name="toAddBookSuccess">/back/book/add.jsp</result>
+			<result name="toUpdateBookSuccess">/back/book/update.jsp</result>
+			<result name="deleteBookByIdFail" type="redirectAction">showAll?errorMsg=${errorMsg}</result>
+		</action>
+	</package>
+
+	<package name="orders" extends="struts-default" namespace="/orders">
+		<action name="*" class="com.zp.action.back.OrdersAction" method="{1}">
+			<result name="showSuccess">/back/order/show.jsp</result>
+			<result name="showDetailByIdSuccess">/back/order/detail.jsp</result>
+		</action>
+	</package>
+
+	<!-- 前台所有模块 -->
+	<package name="forntBook" extends="struts-default" namespace="/front/book">
+		<action name="*" class="com.zp.action.front.BookAction" method="{1}">
+			<result name="showMainPageSuccess">/front/main/main.jsp</result>
+			<result name="showBookByCategorySuccess">/front/main/book_list.jsp</result>
+		</action>
+	</package>
+
+</struts>

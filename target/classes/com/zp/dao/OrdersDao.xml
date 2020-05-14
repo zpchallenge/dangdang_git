@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zp.dao.OrdersDao">
+
+    <resultMap id="ordersMap" type="Orders">
+        <id column="id" property="id"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="total" property="total"/>
+        <result column="create_date" property="createDate"/>
+        <result column="status" property="status"/>
+        <association property="user" javaType="Users">
+            <result column="email" property="email"/>
+            <result column="nickname" property="nickname"/>
+        </association>
+        <association property="address" javaType="Address">
+            <result column="name" property="name"/>
+            <result column="local" property="local"/>
+            <result column="zip_code" property="zipCode"/>
+            <result column="phone" property="phone"/>
+        </association>
+    </resultMap>
+
+    <select id="selectByOrderNo" resultMap="ordersMap">
+        select o.*, u.email, u.nickname, a.name, a.local, a.zip_code, a.phone
+        from orders o
+        left join users u
+        on o.user_id = u.id
+        left join address a
+        on o.address_id = a.id
+        where order_no = #{orderNo}
+    </select>
+
+    <select id="selectByUserId" resultMap="ordersMap">
+        select o.*, u.email, u.nickname, a.name, a.local, a.zip_code, a.phone
+        from orders o
+        left join users u
+        on o.user_id = u.id
+        left join address a
+        on o.address_id = a.id
+        where user_id = #{userId}
+    </select>
+
+    <select id="selectAllByPage" resultMap="ordersMap">
+        select *
+        from(select o.id, o.order_no, o.total, o.status, o.create_date, a.name, a.local, a.phone, rownum n
+            from orders o
+            left join users u
+            on o.user_id = u.id
+            left join address a
+            on o.address_id = a.id)
+        where n between #{start} and #{end}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from orders
+    </select>
+
+    <select id="selectById" resultMap="ordersMap">
+        select * from orders where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from oreders where id = #{id}
+    </delete>
+
+
+</mapper>
