@@ -10,7 +10,7 @@
 			<div class=second_c_02_b1>
 			<div class=second_c_02_b1_1>
 				<a href='#' target='_blank'>
-					<img src="${pageContext.request.contextPath}/back/img/${b.cover}" width=70 border=0 /> 
+					<img height="100px" src="${pageContext.request.contextPath}/back/img/${b.cover}" width=70 border=0 />
 				</a>
 			</div>
 			<div class=second_c_02_b1_2>

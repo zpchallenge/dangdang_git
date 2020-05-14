@@ -38,9 +38,16 @@
 						<ul>
 							<li>
 								<div>
-									<div class=second_fenlei>
-										&middot;全部&nbsp;(${requestScope.totalCount})
-									</div>
+									<c:if test="${requestScope.levels == 1}">
+										<div class=second_fenlei style="color: red">
+											&middot;全部&nbsp;(${requestScope.totalCount})
+										</div>
+									</c:if>
+									<c:if test="${requestScope.levels != 1}">
+										<div class=second_fenlei>
+											&middot;全部&nbsp;(${requestScope.totalCount})
+										</div>
+									</c:if>
 								</div>
 							</li>
 							<div class="clear"></div>
@@ -69,7 +76,7 @@
 										&middot;
 									</div>
 									<div class=second_fenlei3>
-										<a href="${pageContext.request.contextPath}/front/book/showBookByCategory?id=${c.id}">${c.name}&nbsp;(${c.count})</a>
+										<a style="color: red" href="${pageContext.request.contextPath}/front/book/showBookByCategory?id=${c.id}">${c.name}&nbsp;(${c.count})</a>
 									</div>
 								</div>
 							</li>
@@ -162,7 +169,7 @@
 							<div class="list_r_list">
 								<span class="list_r_list_book">
 									<a name="link_prd_img" href='#'>
-										<img src="${pageContext.request.contextPath}/back/img/${b.cover}" />
+										<img height="100px" src="${pageContext.request.contextPath}/back/img/${b.cover}" />
 									</a>
 								</span>
 								<h2>
