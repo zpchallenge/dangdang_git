@@ -35,7 +35,7 @@
 						<a href="#">我的当当</a>”查看并管理您的个人信息
 					</li>
 					<li>
-						<a href="../main/main.jsp">浏览并选购商品</a>
+						<a href="${pageContext.request.contextPath}/front/book/showMainPage">浏览并选购商品</a>
 					</li>
 				</ul>
 			</div>

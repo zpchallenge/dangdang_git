@@ -163,10 +163,11 @@ public class BookAction {
             pageSize = 4;
         }
 
-        Category category = categoryService.selectById (id);
+        Category category = categoryService.selectById (id);  //根据id查询出类别
         List<Category> categoryList1 = null;
         List<Category> categories = null;
         if (category.getLevels () == 1) {
+            //1级类别
             oneName = category.getName ();
             categoryList1 = categoryService.selectByParentId (id); //获取该一级类别下的所有二级类别
             categories = categoryService.selectBookCountById (id);  //获取二级类别id 和其下面的图书数量 count
@@ -174,6 +175,7 @@ public class BookAction {
             int total = bookService.countOne (id);
             totalPage = total%pageSize == 0 ? total/pageSize : total/pageSize + 1;
         } else {
+            //2级类别
             oneName = category.getCategory ().getName ();
             categoryList1 = categoryService.selectByParentId (category.getCategory ().getId ());
             categories = categoryService.selectBookCountById (category.getCategory ().getId ());

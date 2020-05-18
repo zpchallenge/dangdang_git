@@ -8,26 +8,26 @@
 		<link href="../css/secBook_Show.css" rel="stylesheet" type="text/css" />
 		<link href="../css/shopping_vehicle.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${pageContext.request.contextPath}/front/js/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript">
-			$(function () {
-				var p = 0;
-				var total = 0;
-				$(".yprice").each(function (i, obj1) {
-					console.log(i, obj1);
-					var dprices = $(".dprice");
-					var price = Number.parseFloat($(this).html());
-					var dprice = Number.parseFloat($(dprices[i]).html());
-					console.log(price, dprice);
-					var counts = $(".count");
-					var count = Number.parseInt($(counts[i]).html());
-					p += (price - dprice) * count;
-					total += dprice*count;
-				});
-				$("#total_economy").html(p);
-				$("#total_account").html(total);
+		<%--<script type="text/javascript">--%>
+			<%--$(function () {--%>
+				<%--var p = 0;--%>
+				<%--var total = 0;--%>
+				<%--$(".yprice").each(function (i, obj1) {--%>
+					<%--console.log(i, obj1);--%>
+					<%--var dprices = $(".dprice");--%>
+					<%--var price = Number.parseFloat($(this).html());--%>
+					<%--var dprice = Number.parseFloat($(dprices[i]).html());--%>
+					<%--console.log(price, dprice);--%>
+					<%--var counts = $(".count");--%>
+					<%--var count = Number.parseInt($(counts[i]).html());--%>
+					<%--p += (price - dprice) * count;--%>
+					<%--total += dprice*count;--%>
+				<%--});--%>
+				<%--$("#total_economy").html(p);--%>
+				<%--$("#total_account").html(total);--%>
 
-			});
-		</script>
+			<%--});--%>
+		<%--</script>--%>
 	</head>
 	<body>
 		<br />
@@ -103,16 +103,11 @@
 						</td>
 
 						<td >
-							<form id="changeForm" action="${pageContext.request.contextPath}/front/cart/changeCount">
+							<form action="${pageContext.request.contextPath}/front/cart/changeCount">
 								<input type="hidden" name="id" value="${cartMap.key}"/>
 								<input class="del_num" type="number" name="count" size="3" maxlength="4" />
-								<a href="javascript:void(0)" onclick="toSubmit()">变更</a>
+								<a href="javascript:void(0)" onclick="toSubmit(this)">变更</a>
 							</form>
-							<script type="text/javascript">
-								function toSubmit() {
-									$("#changeForm").submit();
-								}
-							</script>
 						</td>
 						<td>
 							<a href="${pageContext.request.contextPath}/front/cart/deleteById?id=${cartMap.key}">删除</a>
@@ -120,7 +115,11 @@
 					</tr>
 					</c:forEach>
 				</table>
-
+                <script type="text/javascript">
+                    function toSubmit(obj) {
+                        $(obj).parent("form").submit();
+                    }
+                </script>
 				<div class="choice_balance">
 					<div class="select_merch">
 						<a href="${pageContext.request.contextPath}/front/book/showMainPage"> 继续挑选商品>></a>
@@ -128,10 +127,10 @@
 					<div class="total_balance">
 						<div class="save_total">
 							您共节省：
-							<span class="c_red"> ￥<span id="total_economy"></span> </span>
+							<span class="c_red"> ￥<span id="total_economy">${sessionScope.cart.priceSave}</span> </span>
 							<span style="font-size: 14px">|</span>
 							<span class="t_add">商品金额总计：</span>
-							<span class="c_red_b"> ￥<span id='total_account'></span>
+							<span class="c_red_b"> ￥<span id='total_account'>${sessionScope.cart.totalPrice}</span>
 							</span>
 						</div>
 						<div id="balance" class="balance">

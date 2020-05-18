@@ -59,10 +59,31 @@
 		</action>
 	</package>
 
-	<package name="cart" extends="struts-default" namespace="/front/cart">
+	<package name="frontCart" extends="struts-default" namespace="/front/cart">
 		<action name="*" class="com.zp.action.front.CartAction" method="{1}">
 			<result name="success" type="redirect">/front/cart/cart_list.jsp</result>
 		</action>
 	</package>
 
+	<package name="frontUser" extends="struts-default" namespace="/front/user">
+		<action name="*" class="com.zp.action.front.UserAction" method="{1}">
+			<result name="validateCodeError" type="redirect">/front/user/register_form.jsp?errorMsg=${errorMsg}</result>
+			<result name="twoPasswordDiff" type="redirect">/front/user/register_form.jsp?errorMsg=${errorMsg}</result>
+			<result name="registerFail" type="redirect">/front/user/register_form.jsp?errorMsg=${errorMsg}</result>
+			<result name="registerSuccess">/front/user/verify_form.jsp</result>
+			<result name="changeUserStatusSuccess" type="redirect">/front/user/register_ok.jsp</result>
+			<result name="changeUserStatusFail">/front/user/verify_form.jsp</result>
+			<result name="emailNotExist" type="redirect">/front/user/login_form.jsp?errorMsg=${errorMsg}</result>
+			<result name="userNotUser" type="redirect">/front/user/login_form.jsp?errorMsg=${errorMsg}</result>
+			<result name="loginFail" type="redirect">/front/user/login_form.jsp?errorMsg=${errorMsg}</result>
+			<result name="loginSuccess" type="redirectAction">
+				<param name="namespace">/front/book</param>
+				<param name="actionName">showMainPage</param>
+			</result>
+			<result name="logoutSuccess" type="redirectAction">
+				<param name="namespace">/front/book</param>
+				<param name="actionName">showMainPage</param>
+			</result>
+		</action>
+	</package>
 </struts>

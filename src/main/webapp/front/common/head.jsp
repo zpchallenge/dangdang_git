@@ -1,4 +1,5 @@
 <%@page contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="../css/book_head090107.css" rel="stylesheet" type="text/css" />
 <div class="head_container">
 	<div class="head_welcome">
@@ -15,10 +16,14 @@
 			</div>
 		</div>
 		<span class="head_toutext" id="logininfo">
-		<b>您好，欢迎光临当当网</b>
-		[&nbsp;<a href="" class="b">登出</a>&nbsp;]
-		[&nbsp;<a href="../user/login_form.jsp" class="b">登录</a>|
-		<a href="../user/register_form.jsp" class="b">注册</a>&nbsp;]
+			<b>您好<font color="red">${sessionScope.u.nickname}</font>，欢迎光临当当网</b>
+		<c:if test="${empty sessionScope.u}">
+			[&nbsp;<a href="${pageContext.request.contextPath}/front/user/login_form.jsp" class="b">登录</a>|
+			<a href="${pageContext.request.contextPath}/front/user/register_form.jsp" class="b">注册</a>&nbsp;]
+		</c:if>
+		<c:if test="${!empty sessionScope.u}">
+		[&nbsp;<a href="${pageContext.request.contextPath}/front/user/logout" class="b">退出</a>&nbsp;]
+		</c:if>
 		</span>
 	</div>
 	<div class="head_head_list">

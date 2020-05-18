@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../css/btn.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/back/css/btn.css" />
 	
 <style type="text/css">
 td{

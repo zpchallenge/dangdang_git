@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>登录 - 当当网</title>
-<link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/pop_cheat.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
+<link href="${pageContext.request.contextPath}/back/css/login.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/back/css/pop_cheat.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/back/js/jquery-3.3.1.js"></script>
 
 </head>
 <body>
 	<div class="head">
-		<a href="http://www.dangdang.com"> <img src="${pageContext.request.contextPath}/images/signin_logo.png" /></a>
+		<a href="http://www.dangdang.com"> <img src="${pageContext.request.contextPath}/back/images/signin_logo.png" /></a>
 		<div class="improve">
-			<img src="${pageContext.request.contextPath}/images/bz.jpg" width="178" height="61" />
+			<img src="${pageContext.request.contextPath}/back/images/bz.jpg" width="178" height="61" />
 		</div>
 	</div>
 
