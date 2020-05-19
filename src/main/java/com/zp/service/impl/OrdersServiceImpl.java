@@ -31,6 +31,15 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
+    public Orders selectByOrderNo(String orderNo) {
+        SqlSession sqlSession = MybatisUtil.openSession ();
+        OrdersDao ordersDao = sqlSession.getMapper (OrdersDao.class);
+        Orders orders = ordersDao.selectByOrderNo (orderNo);
+        MybatisUtil.close (sqlSession);
+        return orders;
+    }
+
+    @Override
     public Orders selectById(String id) {
         SqlSession sqlSession = MybatisUtil.openSession ();
         OrdersDao ordersDao = sqlSession.getMapper (OrdersDao.class);
@@ -45,6 +54,22 @@ public class OrdersServiceImpl implements OrdersService {
         try {
             OrdersDao ordersDao = sqlSession.getMapper (OrdersDao.class);
             ordersDao.insert (order);
+            sqlSession.commit ();
+        } catch (Exception e){
+            sqlSession.rollback ();
+            e.printStackTrace ();
+            throw new RuntimeException (e);
+        } finally{
+            MybatisUtil.close (sqlSession);
+        }
+    }
+
+    @Override
+    public void updateStatus(String orderNo, String status) {
+        SqlSession sqlSession = MybatisUtil.openSession ();
+        try {
+            OrdersDao ordersDao = sqlSession.getMapper (OrdersDao.class);
+            ordersDao.updateStatus (orderNo, status);
             sqlSession.commit ();
         } catch (Exception e){
             sqlSession.rollback ();

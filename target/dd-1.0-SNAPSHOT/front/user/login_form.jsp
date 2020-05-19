@@ -28,7 +28,6 @@
 							登录当当网
 						</h3>
 
-						<h3 align="center" style="color:red;">${param.errorMsg}</h3>
 						<form method="post" action="${pageContext.request.contextPath}/front/user/login" id="ctl00">
 							<ul>
 								<li>

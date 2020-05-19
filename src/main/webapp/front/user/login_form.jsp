@@ -28,11 +28,11 @@
 							登录当当网
 						</h3>
 
-						<form method="post" action="" id="ctl00">
+						<form method="post" action="${pageContext.request.contextPath}/front/user/login" id="ctl00">
 							<ul>
 								<li>
 									<span>请输入Email地址：</span>
-									<input type="text" name="name" id="txtEmail" class="textbox" />
+									<input type="text" name="email" id="txtEmail" class="textbox" />
 								</li>
 								<li>
 									<span class="blank">密码：</span>

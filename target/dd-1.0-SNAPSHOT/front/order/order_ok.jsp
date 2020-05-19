@@ -5,6 +5,7 @@
 		<title>用户注册 - 当当网</title>
 		<link href="../css/login.css" rel="stylesheet" type="text/css" />
 		<link href="../css/page_bottom.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="${pageContext.request.contextPath}/front/js/jquery-1.8.3.min.js"></script>
 	</head>
 	<body>
 		<%@include file="../common/head1.jsp"%>
@@ -29,7 +30,7 @@
 
 				<ul>
 					<li class="nobj">
-						您现在可以：还有<font color="red"><strong>5</strong></font>秒,回到首页！！！
+						您现在可以：还有<font color="red"><strong id="se">5</strong></font>秒,跳转到支付页面！！！
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/front/book/showMainPage">继续浏览并选购商品</a>
@@ -37,7 +38,16 @@
 				</ul>
 			</div>
 		</div>
-
+		<script type="text/javascript">
+			setInterval(function () {
+				var second = Number.parseInt($("#se").html());
+				second = second - 1;
+                if (second == 0){
+                    location.href = "${pageContext.request.contextPath}/front/pay/index.jsp?orderNo=${param.orderNo}&totalPrice=${param.totalPrice}";
+                }
+                $("#se").html(second);
+			},1000)
+		</script>
 		<%@include file="../common/foot1.jsp"%>
 	</body>
 </html>

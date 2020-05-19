@@ -2,9 +2,11 @@ package com.zp.action.front;
 
 import com.zp.entity.*;
 import com.zp.service.AddressService;
+import com.zp.service.BookService;
 import com.zp.service.ItemService;
 import com.zp.service.OrdersService;
 import com.zp.service.impl.AddressServiceImpl;
+import com.zp.service.impl.BookServiceImpl;
 import com.zp.service.impl.ItemServiceImpl;
 import com.zp.service.impl.OrdersServiceImpl;
 import com.zp.util.UUIDUtil;
@@ -19,10 +21,20 @@ public class OrdersAction {
     private OrdersService ordersService = new OrdersServiceImpl ();
     private AddressService addressService = new AddressServiceImpl ();
     private ItemService itemService = new ItemServiceImpl ();
+    private BookService bookService = new BookServiceImpl ();
 
     private Address address;
     private Double totalPrice;
     private String orderNo;
+    private Integer selValue;
+
+    public Integer getSelValue() {
+        return selValue;
+    }
+
+    public void setSelValue(Integer selValue) {
+        this.selValue = selValue;
+    }
 
     public Double getTotalPrice() {
         return totalPrice;
@@ -55,7 +67,7 @@ public class OrdersAction {
         Cart cart = (Cart) session.getAttribute ("cart");
 
         //新添加的地址
-        if (address.getId ().isEmpty ()){
+        if (selValue == 0){
             address.setId (UUIDUtil.getUUID ());
             address.setUserId (u.getId ());
             addressService.add (address);
@@ -86,12 +98,46 @@ public class OrdersAction {
             itemService.insert (item);
         }
 
-        //清空购物车
-        session.removeAttribute ("cart");
 
         totalPrice = order.getTotal ();
         orderNo = order.getOrderNo ();
         return "addOrderSuccess";
     }
 
+
+
+    //改变支付状态
+    public String updateStatus(){
+        Orders order = ordersService.selectByOrderNo (orderNo);
+        if (order.getStatus ().equals ("未支付")){
+            order.setStatus ("已支付");
+        } else {
+            order.setStatus ("未支付");
+        }
+
+
+        ordersService.updateStatus (orderNo, order.getStatus ());
+
+        //支付成功，修改商品的销量
+        HttpSession session = ServletActionContext.getRequest ().getSession ();
+        Cart cart = (Cart) session.getAttribute ("cart");
+
+        Map<Integer, CartItem> itemMap = cart.getItemMap ();
+        Collection<CartItem> cartItems = itemMap.values ();
+        for (CartItem cartItem : cartItems) {
+            Book book = cartItem.getBook ();
+            Integer sale = book.getSale ();
+            book.setSale (sale + cartItem.getCount ());
+            bookService.update (book);
+        }
+
+
+        //清空购物车
+        session.removeAttribute ("cart");
+
+        orderNo = order.getOrderNo ();
+        totalPrice = order.getTotal ();
+
+        return "updateStatusSuccess";
+    }
 }

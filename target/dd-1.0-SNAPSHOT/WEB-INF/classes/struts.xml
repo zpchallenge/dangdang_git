@@ -96,6 +96,7 @@
 	<package name="frontOrder" extends="struts-default" namespace="/front/order">
 		<action name="*" class="com.zp.action.front.OrdersAction" method="{1}">
 			<result name="addOrderSuccess" type="redirect">/front/order/order_ok.jsp?orderNo=${orderNo}&amp;totalPrice=${totalPrice}</result>
+			<result name="updateStatusSuccess" type="redirect">/front/pay/pay_ok.jsp?orderNo=${orderNo}&amp;totalPrice=${totalPrice}</result>
 		</action>
 	</package>
 </struts>

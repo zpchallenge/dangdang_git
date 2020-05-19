@@ -42,12 +42,12 @@
 
     <select id="selectAllByPage" resultMap="ordersMap">
         select *
-        from(select o.id, o.order_no, o.total, o.status, o.create_date, a.name, a.local, a.phone, rownum n
+        from(select x.*, rownum n from(select o.id, o.order_no, o.total, o.status, o.create_date, a.name, a.local, a.phone
             from orders o
             left join users u
             on o.user_id = u.id
             left join address a
-            on o.address_id = a.id)
+            on o.address_id = a.id order by create_date) x)
         where n between #{start} and #{end}
     </select>
 
@@ -62,6 +62,10 @@
     <insert id="insert">
         insert into orders values(#{id}, #{orderNo}, #{user.id}, #{total}, #{createDate}, #{address.id}, #{status})
     </insert>
+
+    <update id="updateStatus">
+        update orders set status = #{status} where order_no = #{orderNo}
+    </update>
 
     <delete id="deleteById">
         delete from oreders where id = #{id}

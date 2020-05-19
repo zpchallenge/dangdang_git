@@ -18,4 +18,6 @@ public interface OrdersDao {
     public void insert(Orders order);
 
     public void deleteById(String id);
+
+    public void updateStatus(@Param ("orderNo") String orderNo, @Param ("status") String status); //改变订单支付状态
 }
