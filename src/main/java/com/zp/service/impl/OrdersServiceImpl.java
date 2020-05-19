@@ -38,4 +38,20 @@ public class OrdersServiceImpl implements OrdersService {
         MybatisUtil.close (sqlSession);
         return orders;
     }
+
+    @Override
+    public void add(Orders order) {
+        SqlSession sqlSession = MybatisUtil.openSession ();
+        try {
+            OrdersDao ordersDao = sqlSession.getMapper (OrdersDao.class);
+            ordersDao.insert (order);
+            sqlSession.commit ();
+        } catch (Exception e){
+            sqlSession.rollback ();
+            e.printStackTrace ();
+            throw new RuntimeException (e);
+        } finally{
+            MybatisUtil.close (sqlSession);
+        }
+    }
 }

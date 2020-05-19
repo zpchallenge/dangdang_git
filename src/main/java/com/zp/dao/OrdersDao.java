@@ -15,5 +15,7 @@ public interface OrdersDao {
 
     public Orders selectByOrderNo(String orderNo);
 
+    public void insert(Orders order);
+
     public void deleteById(String id);
 }

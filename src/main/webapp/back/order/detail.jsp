@@ -21,7 +21,7 @@
 		 <c:forEach var="item" items="${requestScope.items}">
 			<tr align='center'>
 				 <td>${item.book.name}</td>
-				 <td style="width: 100px;"><img style="width:32px;height: 20px" src="${pageContext.request.contextPath}/img/${item.book.cover}"></td>
+				 <td style="width: 100px;"><img style="width:32px;height: 20px" src="${pageContext.request.contextPath}/back/img/${item.book.cover}"></td>
 				 <td style="width: 180px;">原价：¥${item.book.price}</td>
 				 <td style="width: 200px;">当当价：¥${item.book.dprice}</td>
 				 <td style="width: 100px;">${item.count}本</td>

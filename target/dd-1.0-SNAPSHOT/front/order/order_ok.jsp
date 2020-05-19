@@ -23,8 +23,8 @@
 					订单已经生成
 				</h5>
 				<h6>
-					您刚刚生成的订单号是：<font color="red"><strong>10001</strong></font>，
-					金额总计<font color="red"><strong>200</strong></font>
+					您刚刚生成的订单号是：<font color="red"><strong>${param.orderNo}</strong></font>，
+					金额总计<font color="red"><strong>${param.totalPrice}</strong></font>
 				</h6>
 
 				<ul>
@@ -32,7 +32,7 @@
 						您现在可以：还有<font color="red"><strong>5</strong></font>秒,回到首页！！！
 					</li>
 					<li>
-						<a href="../main/main.jsp">继续浏览并选购商品</a>
+						<a href="${pageContext.request.contextPath}/front/book/showMainPage">继续浏览并选购商品</a>
 					</li>
 				</ul>
 			</div>

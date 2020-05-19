@@ -9,4 +9,6 @@ public interface OrdersService {
      public int count();
 
      public Orders selectById(String id);
+
+     public void add(Orders order); //添加订单
 }

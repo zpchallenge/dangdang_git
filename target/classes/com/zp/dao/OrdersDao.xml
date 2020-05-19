@@ -59,6 +59,10 @@
         select * from orders where id = #{id}
     </select>
 
+    <insert id="insert">
+        insert into orders values(#{id}, #{orderNo}, #{user.id}, #{total}, #{createDate}, #{address.id}, #{status})
+    </insert>
+
     <delete id="deleteById">
         delete from oreders where id = #{id}
     </delete>

@@ -24,7 +24,7 @@
     </delete>
 
     <insert id="insert">
-        insert into address values(#{id},#{name},#{local},#{zipCode},#{phone},#{user_id})
+        insert into address values(#{id},#{name},#{local},#{zipCode},#{phone},#{userId})
     </insert>
 
     <update id="update">

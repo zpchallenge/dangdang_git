@@ -1,4 +1,5 @@
 <%@page contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -32,47 +33,30 @@
 						<b>小计</b>
 					</td>
 				</tr>
-
+				<c:forEach items="${sessionScope.cart.itemMap}" var="o" varStatus="vs">
 				<!-- 订单开始 -->
 					<tr>
 						<td valign="top">
-							1
+							${vs.count}
 						</td>
 						<td valign="top">
-							产品1
+							${o.value.book.name}
 						</td>
 						<td valign="top">
-							100
+							${o.value.book.dprice}
 						</td>
 						<td valign="top">
-							2
+							${o.value.count}
 						</td>
 						<td valign="top">
-							200
-						</td>
-					</tr>
-					
-					<tr>
-						<td valign="top">
-							2
-						</td>
-						<td valign="top">
-							产品2
-						</td>
-						<td valign="top">
-							50
-						</td>
-						<td valign="top">
-							2
-						</td>
-						<td valign="top">
-							100
+							${o.value.book.dprice * o.value.count}
 						</td>
 					</tr>
 				<!-- 订单结束 -->
+				</c:forEach>
 				<tr>
 					<td valign="top" class="w1" style="text-align: left" colspan="5">
-						<b>总价￥300</b>
+						<b>总价￥${sessionScope.cart.totalPrice}</b>
 					</td>
 				</tr>
 			</table>
@@ -80,11 +64,11 @@
 			<br />
 			<br />
 			<div class="login_in">
-				<a href="../cart/cart_list.jsp">
-					<input id="btnClientRegister" class="button_1" name="submit" type="submit" value="取消" />
+				<a href="${pageContext.request.contextPath}/front/cart/cart_list.jsp">
+					<input id="btnClientRegister1" class="button_1" name="submit" type="reset" value="取消" />
 				</a>		
-				<a href="address_form.jsp">
-					<input id="btnClientRegister" class="button_1" name="submit" type="submit" value="下一步" />
+				<a href="${pageContext.request.contextPath}/front/address/showAllAddressByUserId">
+					<input id="btnClientRegister2" class="button_1" name="submit" type="submit" value="下一步" />
 				</a>		
 			</div>
 

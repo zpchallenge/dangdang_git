@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8"%>
 <div class="introduce">
-	<img src="${pageContext.request.contextPath}/images/d_introduce.gif" />
+	<img src="${pageContext.request.contextPath}/front/images/d_introduce.gif" />
 	<ul>
 		<li>
 			更多选择

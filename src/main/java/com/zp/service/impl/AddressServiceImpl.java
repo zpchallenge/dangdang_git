@@ -1,29 +1,29 @@
 package com.zp.service.impl;
 
-import com.zp.dao.ItemDao;
-import com.zp.entity.Item;
-import com.zp.service.ItemService;
+import com.zp.dao.AddressDao;
+import com.zp.entity.Address;
+import com.zp.service.AddressService;
 import com.zp.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class ItemServiceImpl implements ItemService {
+public class AddressServiceImpl implements AddressService {
     @Override
-    public List<Item> selectByOrderId(String orderId) {
+    public List<Address> selectAllByUserId(String userId) {
         SqlSession sqlSession = MybatisUtil.openSession ();
-        ItemDao itemDao = sqlSession.getMapper (ItemDao.class);
-        List<Item> items = itemDao.selectByOrderId (orderId);
+        AddressDao addressDao = sqlSession.getMapper (AddressDao.class);
+        List<Address> addressList = addressDao.selectAllByUserId (userId);
         MybatisUtil.close (sqlSession);
-        return items;
+        return addressList;
     }
 
     @Override
-    public void insert(Item item) {
+    public void add(Address address) {
         SqlSession sqlSession = MybatisUtil.openSession ();
         try {
-            ItemDao itemDao = sqlSession.getMapper (ItemDao.class);
-            itemDao.insert (item);
+            AddressDao addressDao = sqlSession.getMapper (AddressDao.class);
+            addressDao.insert (address);
             sqlSession.commit ();
         } catch (Exception e){
             sqlSession.rollback ();

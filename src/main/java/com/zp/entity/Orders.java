@@ -6,7 +6,7 @@ public class Orders {
     private String id;
     private String orderNo; //订单编号
     private Users user; //下单用户
-    private Integer total; //订单价格
+    private Double total; //订单价格
     private Date createDate; //创建时间
     private Address address; //下单地址
     private String status; //未支付 已支付
@@ -14,7 +14,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String id, String orderNo, Users user, Integer total, Date createDate, Address address, String status) {
+    public Orders(String id, String orderNo, Users user, Double total, Date createDate, Address address, String status) {
         this.id = id;
         this.orderNo = orderNo;
         this.user = user;
@@ -48,11 +48,11 @@ public class Orders {
         this.user = user;
     }
 
-    public Integer getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 
